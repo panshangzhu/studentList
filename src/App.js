@@ -35,9 +35,27 @@ function App() {
   }, []);
 
   useEffect(() => {
+    console.log(students[0]);
     var result = students.filter(s => s.name.toLowerCase().includes(name));
     if (tag.length !== 0) {
-      result = result.filter(s => s.tags.includes(tag));
+      function checkTag(tags){
+        console.log(tags);
+        var hasTag;
+        for(var i=0;i<tags.length;i++){
+          if(tags[i].includes(tag)){
+            hasTag=true;
+            console.log(tags[i]);
+            break;
+          }else{
+            hasTag=false;
+          }
+        }
+        return hasTag;
+      }
+      var filteredResult=Array.from(result);
+     
+      result = filteredResult.filter(s => checkTag(s.tags));
+      console.log(result);
     }
     setSearchStudents(result);
   }, [name, tag]);

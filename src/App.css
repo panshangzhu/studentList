@@ -19,9 +19,10 @@ button{
   width:5rem;
   height:1.5rem;
   background-color: beige;
+  outline:none;
   border:none;
   outline:none;
-  border-radius: 20%;
+  border-radius: 40%;
 }
 button:hover{
   cursor: pointer;

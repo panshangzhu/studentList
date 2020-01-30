@@ -14,6 +14,9 @@ export class Student extends Component {
     this.handleChange = this.handleChange.bind(this);
     this.addStudentTag = this.addStudentTag.bind(this);
   }
+  componentDidMount(){
+    this.setState({tags:this.state.tags.concat(this.props.student.tags)});
+  }
   gradeShow() {
     this.setState({ showGrade: !this.state.showGrade });
   }
@@ -32,6 +35,7 @@ export class Student extends Component {
         this.props.addTag(key, this.state.tags);
       }
     );
+    this.setState({tag:""});
   }
   render() {
     const plus = <FontAwesomeIcon icon={faPlus} />;
@@ -65,7 +69,7 @@ export class Student extends Component {
               <input
                 className="add-tag-input"
                 type="text"
-                value={this.state.tage}
+                value={this.state.tag}
                 name="tag"
                 onChange={e => this.handleChange(e)}
               />
